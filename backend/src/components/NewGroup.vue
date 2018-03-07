@@ -17,6 +17,10 @@
         label="分组名称">
       </el-table-column>
       <el-table-column
+        prop="title"
+        label="分组标题">
+      </el-table-column>
+      <el-table-column
         label="图表">
         <template slot-scope="scope">
           <ul>
@@ -41,6 +45,9 @@
       <el-form :model="currentData" label-width="80px">
         <el-form-item label="分组名称">
           <el-input v-model="currentData.name"></el-input>
+        </el-form-item>
+        <el-form-item label="分组标题">
+          <el-input v-model="currentData.title"></el-input>
         </el-form-item>
         <el-form-item label="选择图表">
           <el-transfer

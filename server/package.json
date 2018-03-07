@@ -34,7 +34,8 @@
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "serve-favicon": "~2.4.5",
-    "uppercamelcase": "^3.0.0"
+    "uppercamelcase": "^3.0.0",
+    "write": "^1.0.3"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -12,7 +12,7 @@
           <el-menu-item v-for="(item, index) in navs" :key="item._id" :index="index+''" @click="handleEdit(item, index)">{{item.title}}</el-menu-item>
         </el-menu>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="20">
         <el-form :model="currentData" label-width="80px">
           <el-form-item label="导航名称">
             <el-input v-model="currentData.title"></el-input>
@@ -67,8 +67,7 @@ export default {
     ...mapActions(['getNavigations', 'addNewNavigation', 'updateNavigation', 'deleteNavigation']),
     handleEdit (row, index) {
       this.index = index
-      this.currentData = {...row}
-      this.dialogVisible = true
+      this.currentData = row
     }
   },
   computed: {
@@ -83,12 +82,8 @@ export default {
   },
   data () {
     return {
-      dialogVisible: false,
       currentData: {},
-      index: null,
-      form: {
-        name: ''
-      }
+      index: null
     }
   },
   created () {

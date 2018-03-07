@@ -5,47 +5,47 @@ const decamelize = require('decamelize');
 
 module.exports = page => {
 	const MAIN_CONTENT = `import fetch from 'isomorphic-fetch';
-	import * as t from './actionTypes';
-	import { RPT_APP_BASIC_API } from '../API';
-	import { Alert } from '../../components';
+import * as t from './actionTypes';
+import { RPT_APP_BASIC_API } from '../API';
+import { Alert } from '../../components';
 
-	{{funcs}}
+{{funcs}}
 
-	{{fetchs}}
-	`
+{{fetchs}}
+`
 
 	const FUNC_TEMPLATE = `function get{{name}}(){
-		return {
-			type: t.GET_{{constant}}
-		}
+	return {
+		type: t.GET_{{constant}}
 	}
-	function get{{name}}Success(payload){
-		return {
-			type: t.GET_{{constant}}_SUCCESS,
-			list: payload
-		}
+}
+function get{{name}}Success(payload){
+	return {
+		type: t.GET_{{constant}}_SUCCESS,
+		list: payload
 	}
+}
 
-	function get{{name}}Failed(message){
-		return {
-			type: t.GET_{{constant}}_FAILED,
-			message
-		}
-	}`;
+function get{{name}}Failed(message){
+	return {
+		type: t.GET_{{constant}}_FAILED,
+		message
+	}
+}`;
 	const FETCH_TEMPLATE = `export function fetch{{name}}(start, end, dateType='days'){
-		return (dispatch, getState) => {
-			dispatch(get{{name}}());
-			return fetch('{{ api }}&BoxFishAccessToken=${localStorage.accessToken}')
-			.then(res => res.json())
-			.then(json => {
-				dispatch(get{{name}}Success(json));
-			})
-			.catch((err) => {
-				Alert.alert({message: err.toString(), type: 'error',  wait: 2000});
-				dispatch(get{{name}}Failed(err.toString()));
-			})
-		}
-	};`
+	return (dispatch, getState) => {
+		dispatch(get{{name}}());
+		return fetch('{{ api }}&BoxFishAccessToken=$\{localStorage.accessToken\}')
+		.then(res => res.json())
+		.then(json => {
+			dispatch(get{{name}}Success(json));
+		})
+		.catch((err) => {
+			Alert.alert({message: err.toString(), type: 'error',  wait: 2000});
+			dispatch(get{{name}}Failed(err.toString()));
+		})
+	}
+};`
 
 	let funcTemplate = [];
 	let fetchTemplate = [];

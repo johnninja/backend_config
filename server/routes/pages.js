@@ -4,7 +4,6 @@ var Page = require('../models/Page');
 
 router.get('/all', (req, res, next) => {
 
-	let { page = 1, size = 20 } = req.params;
 	let query = Page.find({},'-__v');
 	query.populate({
 		path: 'groups',

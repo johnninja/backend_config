@@ -9,49 +9,49 @@ module.exports = page => {
 	{{reducers}}
 	`;
 	const REDUCER_TEMPLATE = `export function {{reducer}}(state={
-		list: [],
-		message: '',
-		success: '',
-		fetching: false,
-	},action){
-		switch (action.type){
-			case t.GET_{{constant}}:
-				return {
-					...state, 
-					fetching: true
-				};
-			case t.GET_{{constant}}_SUCCESS:
-				return {
-					...state,
-					list: action.list,
-					success: true,
-					fetching: false
-				};
-			case t.GET_{{constant}}_FAILED:
-				return{
-					...state, 
-					message: action.message,
-					success: false,
-					fetching: false
-				};
-			case t.RESET_STATE:
-				if (action.index != {{index}}) {
-					return state;
-				}
-				return {
-					...state,
-					message: '',
-					success: ''
-				}
-			default:
+	list: [],
+	message: '',
+	success: '',
+	fetching: false,
+},action){
+	switch (action.type){
+		case t.GET_{{constant}}:
+			return {
+				...state, 
+				fetching: true
+			};
+		case t.GET_{{constant}}_SUCCESS:
+			return {
+				...state,
+				list: action.list,
+				success: true,
+				fetching: false
+			};
+		case t.GET_{{constant}}_FAILED:
+			return{
+				...state, 
+				message: action.message,
+				success: false,
+				fetching: false
+			};
+		case t.RESET_STATE:
+			if (action.index != {{index}}) {
 				return state;
-		}
-	}`;
+			}
+			return {
+				...state,
+				message: '',
+				success: ''
+			}
+		default:
+			return state;
+	}
+}`;
 	let reducerTemplate = [];
 
 	page.groups.forEach((group,index) => {
-		let reducer = camelcase(name);
-		let constant = decamelize(group.constant);
+		let reducer = camelcase(group.name);
+		let constant = decamelize(group.name);
 		reducerTemplate.push(render(REDUCER_TEMPLATE, {
 			reducer,
 			index,

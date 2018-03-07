@@ -1,15 +1,8 @@
-const endOfLine = require('os').EOL;
-const render = require('json-templater/string');
-const uppercamelcase = require('uppercamelcase');
-const camelcase = require('camelcase');
-const decamelize = require('decamelize');
-
-module.exports = group => {
-	const MAIN_CONTENT = `import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { Chart, Segment } from '../../../components';
 import { USED_VISIT_ONE } from '../options';
 
-class {{name}} extends Component{
+class GroupTwo extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -48,7 +41,7 @@ class {{name}} extends Component{
 		const { data } = this.props;
 		return <div style={{ ...this.props.style }}>
 			<Segment
-				title="{{title}}"
+				title="分组2"
 				handleChange={val => this.handleChange(val)}
 				menus={[
 					{text: '日', value: 'days'},
@@ -65,12 +58,4 @@ class {{name}} extends Component{
 		</div>
 	}
 }
-export default {{name}};`;
-
-	let template = render(MAIN_CONTENT, {
-		name: uppercamelcase(group.name),
-		title: group.title
-	});
-
-	return template;
-}
+export default GroupTwo;
