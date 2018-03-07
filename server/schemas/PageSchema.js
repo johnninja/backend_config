@@ -10,9 +10,14 @@ let pageSchema = new Schema({
 	title: {
 		type: String,
 	},
+	path_name: String,
 	path: String,
 	node: String,
-	group_ids: [{type: Schema.Types.ObjectId, ref: "group"}],
+	disabled: {
+		type: Boolean,
+		default: false
+	},
+	groups: [{type: Schema.Types.ObjectId, ref: "group"}],
 	create_time: {
 		type: Date,
 		default: Date.now

@@ -7,7 +7,7 @@ const state = {
 
 const getters = {
   allPages: state => state.list.map(item => {
-    item.ids = item.group_ids.map(c => c._id)
+    item.ids = item.groups.map(c => c._id)
     return item
   })
 }

@@ -14,19 +14,31 @@
       </el-table-column>
       <el-table-column
         prop="name"
-        label="页面标题">
+        label="页面名称">
       </el-table-column>
       <el-table-column
         prop="title"
-        label="导航标题">
+        label="页面标题">
       </el-table-column>
       <el-table-column
         label="分组">
         <template slot-scope="scope">
           <ul>
-            <li v-for="item in scope.row.group_ids" :key="item._id">{{ item.name }}</li>
+            <li v-for="item in scope.row.groups" :key="item._id">{{ item.name }}</li>
           </ul>
         </template>
+      </el-table-column>
+      <el-table-column
+        prop="path_name"
+        label="路径名称">
+      </el-table-column>
+      <el-table-column
+        prop="path"
+        label="访问路径">
+      </el-table-column>
+      <el-table-column
+        prop="node"
+        label="权限节点">
       </el-table-column>
       <el-table-column
         prop="create_time"
@@ -43,13 +55,22 @@
     </el-table>
     <el-dialog title="编辑页面" :visible.sync="dialogVisible">
       <el-form :model="currentData" label-width="80px">
-        <el-form-item label="页面标题">
+        <el-form-item label="页面名称">
           <el-input v-model="currentData.name"></el-input>
         </el-form-item>
-        <el-form-item label="导航标题">
+        <el-form-item label="页面标题">
           <el-input v-model="currentData.title"></el-input>
         </el-form-item>
-        <el-form-item label="选择图表">
+        <el-form-item label="路径名称">
+          <el-input v-model="currentData.path_name"></el-input>
+        </el-form-item>
+        <el-form-item label="访问路径">
+          <el-input v-model="currentData.path"></el-input>
+        </el-form-item>
+        <el-form-item label="权限节点">
+          <el-input v-model="currentData.node"></el-input>
+        </el-form-item>
+        <el-form-item label="选择分组">
           <el-transfer
             v-model="currentData.ids"
             :titles="['未添加','已添加']"
@@ -101,7 +122,7 @@ export default {
     createPage () {
       this.currentData = {
         ...this.currentData,
-        group_ids: this.currentData.ids
+        groups: this.currentData.ids
       }
       delete this.currentData.ids
       this.addNewPage(this.currentData)
@@ -109,7 +130,7 @@ export default {
     editPage (index) {
       this.currentData = {
         ...this.currentData,
-        group_ids: this.currentData.ids
+        groups: this.currentData.ids
       }
       delete this.currentData.ids
       this.updatePage({ data: this.currentData, index })

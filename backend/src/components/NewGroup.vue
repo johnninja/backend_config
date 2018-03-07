@@ -20,7 +20,7 @@
         label="图表">
         <template slot-scope="scope">
           <ul>
-            <li v-for="item in scope.row.chart_ids" :key="item._id">{{ item.name }}</li>
+            <li v-for="item in scope.row.charts" :key="item._id">{{ item.name }}</li>
           </ul>
         </template>
       </el-table-column>
@@ -94,7 +94,7 @@ export default {
     createGroup () {
       this.currentData = {
         ...this.currentData,
-        chart_ids: this.currentData.ids
+        charts: this.currentData.ids
       }
       delete this.currentData.ids
       this.addNewGroup(this.currentData)
@@ -102,7 +102,7 @@ export default {
     editGroup (index) {
       this.currentData = {
         ...this.currentData,
-        chart_ids: this.currentData.ids
+        charts: this.currentData.ids
       }
       delete this.currentData.ids
       this.updateGroup({ data: this.currentData, index })
