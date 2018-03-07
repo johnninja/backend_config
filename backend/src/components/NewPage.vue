@@ -24,7 +24,7 @@
         label="分组">
         <template slot-scope="scope">
           <ul>
-            <li v-for="item in scope.row.group_ids" :key="item._id">{{ item.name }}</li>
+            <li v-for="item in scope.row.groups" :key="item._id">{{ item.name }}</li>
           </ul>
         </template>
       </el-table-column>
@@ -122,7 +122,7 @@ export default {
     createPage () {
       this.currentData = {
         ...this.currentData,
-        group_ids: this.currentData.ids
+        groups: this.currentData.ids
       }
       delete this.currentData.ids
       this.addNewPage(this.currentData)
@@ -130,7 +130,7 @@ export default {
     editPage (index) {
       this.currentData = {
         ...this.currentData,
-        group_ids: this.currentData.ids
+        groups: this.currentData.ids
       }
       delete this.currentData.ids
       this.updatePage({ data: this.currentData, index })
