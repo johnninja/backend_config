@@ -7,10 +7,10 @@ router.get('/all', (req, res, next) => {
 	let { page = 1, size = 20 } = req.params;
 	let query = Page.find({},'-__v');
 	query.populate({
-		path: 'group_ids',
+		path: 'groups',
 		select: ['_id', 'name'],
 		populate: {
-			path: 'chart_ids',
+			path: 'charts',
 			select: ['_id', 'name']
 		}
 	})
@@ -33,12 +33,12 @@ router.get('/all', (req, res, next) => {
 router.post('/', (req, res, next) => {
 	var page = new Page({
 		name: req.body.name,
-		group_ids: req.body.group_ids
+		groups: req.body.groups
 	});
 	page
 	.save()
 	.then(doc => {
-		Page.findOne(doc).populate('group_ids', '_id name')
+		Page.findOne(doc).populate('groups', '_id name')
 		.exec()
 		.then(ret => {
 			res.json({code: 0, data: ret});
@@ -60,7 +60,7 @@ router.put('/', (req, res, next) => {
 				message: err.toString()
 			})
 		}else {
-			Page.findOne(doc).populate('group_ids', '_id name')
+			Page.findOne(doc).populate('groups', '_id name')
 			.then(ret => {
 				res.json({
 					code: 0,
@@ -89,5 +89,18 @@ router.delete('/', (req, res, next) => {
 		}
 	})
 })
+
+// router.post('/build', (req, res, next) => {
+// 	Page.findOne({_id: req.body.id}, (err, doc) => {
+// 		if (err) {
+// 			res.json({
+// 				code: 1,
+// 				message: err.toString()
+// 			})
+// 		} else {
+
+// 		}
+// 	});
+// });
 
 module.exports = router;

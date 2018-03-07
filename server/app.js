@@ -11,6 +11,7 @@ var groups = require('./routes/groups');
 var pages = require('./routes/pages');
 var build = require('./routes/build');
 var navigations = require('./routes/navigations');
+var test = require('./routes/test');
 
 var mongoose = require('./config/mongoose');
 var db = mongoose();
@@ -42,6 +43,7 @@ app.use('/groups', groups);
 app.use('/pages', pages);
 app.use('/build', build);
 app.use('/navigations', navigations);
+// app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

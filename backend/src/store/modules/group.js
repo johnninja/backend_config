@@ -7,7 +7,7 @@ const state = {
 
 const getters = {
   allGroups: state => state.list.map(item => {
-    item.ids = item.chart_ids.map(c => c._id)
+    item.ids = item.charts.map(c => c._id)
     return item
   })
 }

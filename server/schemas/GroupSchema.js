@@ -7,11 +7,12 @@ let groupSchema = new Schema({
 		required: true,
 		unique: true
 	},
+	title: String,
 	disabled: {
 		type: Boolean,
 		default: false
 	},
-	chart_ids: [{type: Schema.Types.ObjectId, ref: 'chart'}],
+	charts: [{type: Schema.Types.ObjectId, ref: 'chart'}],
 	create_time: {
 		type: Date,
 		default: Date.now
