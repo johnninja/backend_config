@@ -6,7 +6,8 @@ const decamelize = require('decamelize');
 
 module.exports = page => {
 	const MAIN_CONTENT = `import * as t from './actionTypes';
-	{{reducers}}
+	
+{{reducers}}
 	`;
 	const REDUCER_TEMPLATE = `export function {{reducer}}(state={
 	list: [],

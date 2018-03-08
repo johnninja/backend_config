@@ -18,6 +18,10 @@ let pageSchema = new Schema({
 		default: false
 	},
 	groups: [{type: Schema.Types.ObjectId, ref: "group"}],
+	build: {
+		type: Boolean,
+		default: false
+	},
 	create_time: {
 		type: Date,
 		default: Date.now

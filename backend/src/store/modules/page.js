@@ -106,6 +106,32 @@ const actions = {
         commit(t.SHOW_MESSAGE, err.toString())
         commit(t.HIDE_LOADING)
       })
+  },
+  buildPage ({commit, state}, payload) {
+    commit(t.SHOW_LOADING)
+    fetch(t.API + '/build/page', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: payload.id
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.code === 0) {
+          commit(t.BUILD_PAGE, { data: json.data, index: payload.index })
+          commit(t.SHOW_MESSAGE, 'success')
+        } else {
+          commit(t.SHOW_MESSAGE, json.message)
+        }
+        commit(t.HIDE_LOADING)
+      })
+      .catch(err => {
+        commit(t.SHOW_MESSAGE, err.toString())
+        commit(t.HIDE_LOADING)
+      })
   }
 }
 
@@ -121,6 +147,9 @@ const mutations = {
   },
   [t.DELETE_PAGE] (state, index) {
     state.list = [...state.list.slice(0, index), ...state.list.slice(index + 1)]
+  },
+  [t.BUILD_PAGE] (state, payload) {
+    state.list = [...state.list.slice(0, payload.index), payload.data, ...state.list.slice(payload.index + 1)]
   }
 }
 

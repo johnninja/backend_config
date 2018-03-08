@@ -19,6 +19,7 @@ export const GET_PAGE = 'GET_PAGE'
 export const ADD_NEW_PAGE = 'ADD_NEW_PAGE'
 export const UPDATE_PAGE = 'UPDATE_PAGE'
 export const DELETE_PAGE = 'DELETE_PAGE'
+export const BUILD_PAGE = 'BUILD_PAGE'
 
 export const SHOW_LOADING = 'SHOW_LOADING'
 export const HIDE_LOADING = 'HIDE_LOADING'

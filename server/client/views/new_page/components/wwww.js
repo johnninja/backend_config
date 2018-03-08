@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Chart, Segment } from '../../../components';
 import { USED_VISIT_ONE } from '../options';
 
-class GroupTwo extends Component{
+class Wwww extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -41,7 +41,7 @@ class GroupTwo extends Component{
 		const { data } = this.props;
 		return <div style={{ ...this.props.style }}>
 			<Segment
-				title="分组2"
+				title="{{title}}"
 				handleChange={val => this.handleChange(val)}
 				menus={[
 					{text: '日', value: 'days'},
@@ -58,4 +58,4 @@ class GroupTwo extends Component{
 		</div>
 	}
 }
-export default GroupTwo;
+export default Wwww;

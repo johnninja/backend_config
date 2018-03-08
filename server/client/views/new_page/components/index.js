@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PageHeader, Search } from '../../../components';
-import { fetchGroupOne, fetchGroupTwo } from '../actions';
+import { fetchWwww } from '../actions';
 import { RESET_STATE } from '../actionTypes';
 import moment from 'moment';
-import GroupOne from './group_one';
-import GroupTwo from './group_two';
+import Wwww from './wwww';
 
-class FirstPage extends Component{
+class NewPage extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,26 +15,22 @@ class FirstPage extends Component{
 		}
 	}
 	componentDidUpdate(prevProps, prevState) {
-		const { dispatch, groupOne, groupTwo } = this.props;
+		const { dispatch, wwww } = this.props;
 
-		if (groupOne.success !== '') {
+		if (wwww.success !== '') {
 			dispatch({type: RESET_STATE, index: 0})
-		}
-if (groupTwo.success !== '') {
-			dispatch({type: RESET_STATE, index: 1})
 		}
 	}
 	handleSearch() {
 		const { start, end } = this.state;
 		this.refs.group0.handleChange()
-this.refs.group1.handleChange()
 	}
 	render() {
 		const { start, end } = this.state;
-		const { dispatch, groupOne, groupTwo } = this.props;
+		const { dispatch, wwww } = this.props;
 		
 		return <div>
-			<PageHeader size="large">测试标题</PageHeader>
+			<PageHeader size="large">侧导航1</PageHeader>
 			<Search
 				indicator="使用"
 				start={start}
@@ -44,22 +39,13 @@ this.refs.group1.handleChange()
 				handleDayChange={(start, end) => this.setState({start, end})}
 			/>
 			<div className="report" style={{marginTop: '2rem', padding: '1rem'}}>
-				<GroupOne
+				<Wwww
 					start={start}
 					end={end}
 					ref="group0"
 					dispatch={dispatch}
-					data={groupOne}
-					action={fetchGroupOne}
-					style={{marginBottom: '2rem'}}
-				/>
-<GroupTwo
-					start={start}
-					end={end}
-					ref="group1"
-					dispatch={dispatch}
-					data={groupTwo}
-					action={fetchGroupTwo}
+					data={wwww}
+					action={fetchWwww}
 					style={{marginBottom: '2rem'}}
 				/>
 			</div>
@@ -68,9 +54,8 @@ this.refs.group1.handleChange()
 }
 const mapStateToProps = state => {
 	return {
-		groupOne: state.groupOne,
-groupTwo: state.groupTwo,
+		wwww: state.wwww,
 	}
 }
 
-export default connect(mapStateToProps)(FirstPage);
+export default connect(mapStateToProps)(NewPage);

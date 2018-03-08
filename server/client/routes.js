@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import { Login } from './views/login';
 import Main from './views/main/components';
+import { Dgdgd } from "./views/dgdgd";
 
 class Container extends React.Component{
 	render() {
@@ -25,30 +26,14 @@ const Routers = (store) => (
 		}} component={ Main }>
 			<IndexRedirect to="used" />
 			<Route path="used" component={ Container }>
+				
 			</Route>
-			<Route path="kindergarten" component={ Container }>
+			<Route path="used" component={ Container }>
+				
 			</Route>
-			<Route path="payment" component={ Container }>
-			</Route>
-			<Route path="course" component={ Container }>
-			</Route>
-			<Route path="sales" component={ Container }>
-			</Route>
-			<Route path="monitor" component={ Container }>
-			</Route>
-			<Route path="study" component={ Container }>
-			</Route>
-			<Route path="push" component={ Container }>
-			</Route>
-			<Route path="months" component={ Container }>
-			</Route>
-			<Route path="extend" component={ Container }>
-			</Route>
-			<Route path="eleven" component={ Container }>
-			</Route>
-			<Route path="assets" component={ Container }>
-			</Route>
-			<Route path="school" component={ Container }>
+			<Route path="top" component={ Container }>
+				<IndexRedirect to="test" />
+				<Route path="test" component={ Dgdgd }/>
 			</Route>
 		</Route>
 	</Router>

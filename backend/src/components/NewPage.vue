@@ -50,6 +50,7 @@
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleEdit(scope.row, scope.$index)">修改</el-button>
           <el-button type="text" size="small" @click="deletePage({id: scope.row._id, index: scope.$index})">删除</el-button>
+          <el-button type="text" size="small" @click="buildPage({id: scope.row._id, index: scope.$index})">{{scope.row.build ? '重新编译' : '编译'}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -113,7 +114,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getPages', 'addNewPage', 'updatePage', 'deletePage', 'getGroups']),
+    ...mapActions(['getPages', 'addNewPage', 'updatePage', 'deletePage', 'getGroups', 'buildPage']),
     handleEdit (row, index) {
       this.index = index
       this.currentData = {...row}
