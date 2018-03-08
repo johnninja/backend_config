@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // routes
+var index = require('./routes/index');
 var charts = require('./routes/charts');
 var groups = require('./routes/groups');
 var pages = require('./routes/pages');
@@ -28,7 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.all('*', (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -38,6 +39,7 @@ app.all('*', (req, res, next) => {
     next();
 })
 
+app.use('/', index);
 app.use('/charts', charts);
 app.use('/groups', groups);
 app.use('/pages', pages);
