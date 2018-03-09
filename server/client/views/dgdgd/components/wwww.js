@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Chart, Segment } from '../../../components';
-import { USED_VISIT_ONE } from '../options';
 
 class Wwww extends Component{
 	constructor(props) {
@@ -41,7 +40,7 @@ class Wwww extends Component{
 		const { data } = this.props;
 		return <div style={{ ...this.props.style }}>
 			<Segment
-				title="{{title}}"
+				title="group one"
 				handleChange={val => this.handleChange(val)}
 				menus={[
 					{text: '日', value: 'days'},

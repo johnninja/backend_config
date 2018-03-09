@@ -25,7 +25,7 @@ function getWwwwFailed(message){
 export function fetchWwww(start, end, dateType='days'){
 	return (dispatch, getState) => {
 		dispatch(getWwww());
-		return fetch('{{ api }}&BoxFishAccessToken=${localStorage.accessToken}')
+		return fetch('{{api}}&BoxFishAccessToken='+localStorage.accessToken)
 		.then(res => res.json())
 		.then(json => {
 			dispatch(getWwwwSuccess(json));

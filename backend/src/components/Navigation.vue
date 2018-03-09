@@ -5,7 +5,6 @@
     <el-row style="margin-top: 20px;" :gutter="20">
       <el-col :span="4">
         <el-menu
-          default-active="0"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">

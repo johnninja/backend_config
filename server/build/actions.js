@@ -35,7 +35,7 @@ function get{{name}}Failed(message){
 	const FETCH_TEMPLATE = `export function fetch{{name}}(start, end, dateType='days'){
 	return (dispatch, getState) => {
 		dispatch(get{{name}}());
-		return fetch('{{ api }}&BoxFishAccessToken=$\{localStorage.accessToken\}')
+		return fetch('{{api}}&BoxFishAccessToken='+localStorage.accessToken)
 		.then(res => res.json())
 		.then(json => {
 			dispatch(get{{name}}Success(json));

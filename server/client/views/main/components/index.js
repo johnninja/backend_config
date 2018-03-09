@@ -7,23 +7,7 @@ import SideMenu from './side-menu';
 import { fetchAuthCode, fetchOrgName, fetchSubOrgName } from '../actions';
 import { Loader, Transition } from '../../../components';
 import { LOGOUT } from '../actionTypes';
-import navConfig from './nav.config';
-
-const topNav = [
-	{name:'使用', path: '/used', children: navConfig.used},
-	{name:'付费', path: '/payment', children: navConfig.payment},
-	{name:'上课', path: '/course', children: navConfig.course},
-	{name:'学习', path: '/study', children: navConfig.study},
-	{name:'幼儿园', path: '/kindergarten', children: navConfig.kindergarten},
-	{name:'销售管理', path: '/sales', children: navConfig.sales},
-	{name:'用户资产', path: '/assets', children: navConfig.assets},
-	{name:'销售活动', path: '/eleven', children: navConfig.eleven},
-	{name:'学校管理', path: '/school', children: navConfig.school},
-	{name:'渠道推广', path: '/extend', children: navConfig.extend},
-	{name:'环节监控', path: '/monitor', children: navConfig.monitor},
-	{name:'推送管理', path: '/push', children: navConfig.push},
-	{name:'月度监控', path: '/months', children: navConfig.months},
-];
+import navConfig from '../config';
 
 class Main extends Component{
 	constructor(props) {
@@ -66,20 +50,17 @@ class Main extends Component{
 		const { location, authCodes } = this.props;
 		const path = location.pathname;
 		let matched = path.match(/\w+/i) || 'used';
-		let matchedNav = navConfig[matched] || [];
-		let filterNav = matchedNav.filter(item => authCodes.codes.includes(item.node));
+		let matchedNav = navConfig[matched] || {children:[]};
+		let filterNav = matchedNav.children.filter(item => authCodes.codes.includes(item.node));
+		
 		let cur = filterNav.filter(item => item.path == path);
 		
-		if (cur.length == 0) {
-			filterNav.forEach(item => {
-				if (item.children) {
-					cur = item.children.filter(sub => sub.path == path)
-				}
-			})
+		let links = [];
+		for (let key in navConfig){
+			links.push(navConfig[key])
 		}
-
 		return <div id="content">
-			<TopNav links={topNav} codes={authCodes.codes} handleLogout={() => this.handleLogout()}/>
+			<TopNav links={links} codes={authCodes.codes} handleLogout={() => this.handleLogout()}/>
 			{matched == "dashboard" ? null : <SideMenu links={filterNav || []}/>}
 			<div className="container" 
 				style={

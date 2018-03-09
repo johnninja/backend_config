@@ -21,6 +21,9 @@ export const UPDATE_PAGE = 'UPDATE_PAGE'
 export const DELETE_PAGE = 'DELETE_PAGE'
 export const BUILD_PAGE = 'BUILD_PAGE'
 
+export const APPLY_CHANGE = 'APPLY_CHANGE'
+export const BUILD_APP = 'BUILD_APP'
+
 export const SHOW_LOADING = 'SHOW_LOADING'
 export const HIDE_LOADING = 'HIDE_LOADING'
 

@@ -1,0 +1,5 @@
+export default {
+	used: {"children":[],"create_time":"2018-03-06T08:08:29.368Z","_id":"5a9e4c7da5b84b4307c35723","title":"顶导1","__v":0,"path":"used"},
+	used: {"children":[],"create_time":"2018-03-06T08:20:07.852Z","_id":"5a9e4f376e37fe4434e9d9bd","title":"顶导2","path":"used","__v":0},
+	top: {"children":[{"disabled":false,"groups":[{"disabled":false,"charts":[],"create_time":"2018-03-05T09:40:19.460Z","_id":"5a9d1083ec63571402931c8f","name":"wwww","chart_ids":["5a9527572d42b9856a3490fd","5a979d0bb81c76530884a53d"],"__v":0,"title":"group one"}],"build":true,"create_time":"2018-03-05T10:25:12.477Z","_id":"5a9d1b08291cbb160fe69d0f","name":"dgdgd","group_ids":["5a9cb9d6eb457d08476b4a1b"],"__v":0,"title":"侧导航4","path":"/top/test","node":"report_used_activity"}],"create_time":"2018-03-06T09:40:34.726Z","_id":"5a9e6212cd7e0d46a875665a","title":"顶导3","path":"top","__v":0}
+}

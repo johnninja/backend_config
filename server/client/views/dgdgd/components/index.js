@@ -6,7 +6,7 @@ import { RESET_STATE } from '../actionTypes';
 import moment from 'moment';
 import Wwww from './wwww';
 
-class NewPage extends Component{
+class Dgdgd extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,7 +30,7 @@ class NewPage extends Component{
 		const { dispatch, wwww } = this.props;
 		
 		return <div>
-			<PageHeader size="large">侧导航1</PageHeader>
+			<PageHeader size="large">侧导航4</PageHeader>
 			<Search
 				indicator="使用"
 				start={start}
@@ -58,4 +58,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps)(NewPage);
+export default connect(mapStateToProps)(Dgdgd);

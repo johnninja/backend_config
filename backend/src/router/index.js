@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import NewChart from '@/components/NewChart'
 import NewGroup from '@/components/NewGroup'
 import NewPage from '@/components/NewPage'
+import Build from '@/components/Build'
 
 Vue.use(Router)
 
@@ -11,6 +12,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/navigation'
+    },
+    {
+      path: '/navigation',
       name: 'Navigation',
       component: Navigation
     },
@@ -28,6 +33,11 @@ export default new Router({
       path: '/page',
       name: 'NewPage',
       component: NewPage
+    },
+    {
+      path: '/build',
+      name: 'Build',
+      component: Build
     }
   ]
 })

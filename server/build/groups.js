@@ -7,7 +7,6 @@ const decamelize = require('decamelize');
 module.exports = group => {
 	const MAIN_CONTENT = `import React, { Component } from 'react';
 import { Chart, Segment } from '../../../components';
-import { USED_VISIT_ONE } from '../options';
 
 class {{name}} extends Component{
 	constructor(props) {

@@ -20,12 +20,12 @@ class SideMenu extends Component{
 			<div className="ui secondary vertical pointing menu">
 				{links.map((item,index) => {
 					if (item.absolute) {
-						return <a href={item.path} target='_blank' key={index} className="item">{item.name}</a>
+						return <a href={item.path} target='_blank' key={index} className="item">{item.title}</a>
 					}
 					if (item.children) {
 						return <SubMenu menu={item}/>
 					}
-					return <NavItem key={index} name={item.name} path={item.path}/>
+					return <NavItem key={index} name={item.title} path={item.path}/>
 				})}
 			</div>
 		</div>

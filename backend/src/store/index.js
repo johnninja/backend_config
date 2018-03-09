@@ -5,6 +5,7 @@ import chart from './modules/chart'
 import group from './modules/group'
 import page from './modules/page'
 import navigation from './modules/navigation'
+import build from './modules/build'
 
 Vue.use(Vuex)
 
@@ -35,7 +36,8 @@ export default new Vuex.Store({
     chart,
     group,
     page,
-    navigation
+    navigation,
+    build
   },
   state,
   getters,

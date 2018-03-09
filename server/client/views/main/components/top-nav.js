@@ -31,7 +31,7 @@ class TopNav extends Component{
 				});
 				return displayNavs.length > 0 ? <NavItem 
 					key={index} 
-					name={item.name} 
+					name={item.title} 
 					path={item.path}
 					// style={{backgroundColor: item.name == '双十一11・11' ? '#F44336' : null}}
 					// icon={item.name == '双十一11・11' ? 'gift' : null}

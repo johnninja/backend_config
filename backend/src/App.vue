@@ -5,7 +5,7 @@
       <el-aside width="200px">
         <el-menu>
           <el-menu-item index="1">
-            <router-link to="/" slot="title">新建导航</router-link>
+            <router-link to="navigation" slot="title">新建导航</router-link>
           </el-menu-item>
           <el-menu-item index="1">
             <router-link to="chart" slot="title">新建图表</router-link>
@@ -15,6 +15,9 @@
           </el-menu-item>
           <el-menu-item index="3">
             <router-link to="page" slot="title">新建页面</router-link>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <router-link to="build" slot="title">发布页面</router-link>
           </el-menu-item>
         </el-menu>
       </el-aside>

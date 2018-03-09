@@ -20,6 +20,7 @@ const genReducers = require('../build/reducers.js');
 
 const genRoutes = require('../build/routes.js');
 const genRootReducer = require('../build/rootReducer.js');
+const genNavs = require('../build/navigations.js');
 
 router.post('/', (req, res, next) => {
 	webpack(config, (err, stats) => {
@@ -105,9 +106,11 @@ router.post('/app', (req, res, next) => {
 		} else {
 			let routes = genRoutes(docs);
 			let rootReducer = genRootReducer(docs);
+			let nav = genNavs(docs);
 
 			writeFile(path.resolve('./client/routes.js'), routes, handleErr);
 			writeFile(path.resolve('./client/views/rootReducer.js'), rootReducer, handleErr);
+			writeFile(path.resolve('./client/views/main/config.js'), nav, handleErr);
 
 			res.json({
 				code: 0,
